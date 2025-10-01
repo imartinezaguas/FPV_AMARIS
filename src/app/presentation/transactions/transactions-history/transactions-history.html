@@ -1,0 +1,112 @@
+<mat-card class="tx-card">
+  <mat-card-header>
+    <mat-card-title>📑 Últimas transacciones</mat-card-title>
+  </mat-card-header>
+
+  <!-- Selector visible solo si el rol es Consultor -->
+  <div *ngIf="auth.getUser()?.role === 'Consultor'" class="user-select">
+    <mat-form-field appearance="outline">
+      <mat-label>Selecciona un usuario</mat-label>
+      <mat-select [(ngModel)]="selectedUserId" (selectionChange)="onUserChange($event.value)">
+        <mat-option *ngFor="let u of users" [value]="u.id">{{ u.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+    <span>Cargando…</span>
+  </div>
+
+  <!-- Tabla visible solo en desktop -->
+  <div class="table-wrapper desktop" *ngIf="!loading && data.length">
+    <table mat-table [dataSource]="data" class="mat-elevation-z2">
+
+      <!-- Columnas -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let t">{{ t.date | date:'short' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let t">
+          <mat-icon [ngClass]="t.type === 'apertura' ? 'icon-success' : 'icon-error'">
+            {{ t.type === 'apertura' ? 'arrow_upward' : 'cancel' }}
+          </mat-icon>
+          <span [ngClass]="t.type === 'apertura' ? 'text-success' : 'text-error'">
+            {{ t.type | titlecase }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fund">
+        <th mat-header-cell *matHeaderCellDef> Fondo </th>
+        <td mat-cell *matCellDef="let t">{{ t.fundId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Monto </th>
+        <td mat-cell *matCellDef="let t">{{ t.amount | currency:'COP' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactions">
+        <th mat-header-cell *matHeaderCellDef> Transacción </th>
+        <td mat-cell *matCellDef="let t">{{ t.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let t">{{ t.userId }}</td>
+      </ng-container>
+
+      <!-- Filas -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <!-- Vista alternativa: tarjetas en móvil -->
+  <div class="mobile" *ngIf="!loading && data.length">
+    <div class="tx-card-mobile" *ngFor="let t of data">
+      <div class="row">
+        <span class="label">Fecha</span>
+        <span class="value">{{ t.date | date:'short' }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Tipo</span>
+        <span class="value" [ngClass]="t.type === 'apertura' ? 'text-success' : 'text-error'">
+          <mat-icon [ngClass]="t.type === 'apertura' ? 'icon-success' : 'icon-error'">
+            {{ t.type === 'apertura' ? 'arrow_upward' : 'cancel' }}
+          </mat-icon>
+          {{ t.type | titlecase }}
+        </span>
+      </div>
+      <div class="row">
+        <span class="label">Fondo</span>
+        <span class="value">{{ t.fundId }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Monto</span>
+        <span class="value">{{ t.amount | currency:'COP' }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Tx ID</span>
+        <span class="value">{{ t.id }}</span>
+      </div>
+      <div class="row">
+        <span class="label">Usuario</span>
+        <span class="value">{{ t.userId }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje vacío -->
+  <div *ngIf="!loading && !data.length" class="no-data">
+    <mat-icon>info</mat-icon>
+    <span>No hay transacciones</span>
+  </div>
+</mat-card>

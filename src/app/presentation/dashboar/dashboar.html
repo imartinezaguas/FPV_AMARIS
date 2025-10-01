@@ -1,0 +1,84 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Menú lateral (aparece en móviles) -->
+  <mat-sidenav #drawer class="sidenav" mode="over">
+    <mat-nav-list *ngIf="user() as u">
+      <!-- Cliente -->
+      <ng-container *ngIf="u.role === 'Cliente'">
+        <a mat-list-item (click)="navigateHome(); drawer.close()">Inicio</a>
+        <a mat-list-item (click)="navigateFunds(); drawer.close()">Fondos</a>
+        <a mat-list-item (click)="navigateTransactions(); drawer.close()">Mis Transacciones</a>
+      </ng-container>
+
+      <!-- Consultor -->
+      <ng-container *ngIf="u.role === 'Consultor'">
+        <a mat-list-item (click)="navigateHome(); drawer.close()">Inicio</a>
+        <a mat-list-item (click)="navigateTransactions(); drawer.close()">Transacciones Clientes</a>
+      </ng-container>
+
+      <!-- Admin -->
+      <ng-container *ngIf="u.role === 'Admin'">
+        <a mat-list-item (click)="navigateHome(); drawer.close()">Inicio</a>
+        <a mat-list-item (click)="navigateFunds(); drawer.close()">Fondos</a>
+        <a mat-list-item (click)="navigateTransactions(); drawer.close()">Transacciones</a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="toolbar">
+
+      <!-- Botón hamburguesa (solo visible en móvil) -->
+      <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <!-- Marca -->
+      <div class="brand">
+        <mat-icon class="logo">account_balance</mat-icon>
+        <span>BTG Fondos</span>
+      </div>
+
+      <!-- Navegación horizontal (oculta en móvil con CSS) -->
+      <nav class="nav" *ngIf="user() as u">
+        <!-- Cliente -->
+        <ng-container *ngIf="u.role === 'Cliente'">
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateHome()">Inicio</a>
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateFunds()">Fondos</a>
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateTransactions()">Mis Transacciones</a>
+        </ng-container>
+
+        <!-- Consultor -->
+        <ng-container *ngIf="u.role === 'Consultor'">
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateHome()">Inicio</a>
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateTransactions()">Transacciones Clientes</a>
+        </ng-container>
+
+        <!-- Admin -->
+        <ng-container *ngIf="u.role === 'Admin'">
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateHome()">Inicio</a>
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateFunds()">Fondos</a>
+          <a mat-button class="nav-link" routerLinkActive="active-link" (click)="navigateTransactions()">Transacciones</a>
+        </ng-container>
+      </nav>
+
+      <span class="spacer"></span>
+
+      <!-- Área usuario -->
+      <div class="user-area" *ngIf="user() as u">
+        <div class="user-chip">
+          <mat-icon>person</mat-icon>
+          <span>${{ u.balance }}</span>
+          <span class="user-name">{{ u.name }}</span>
+          <span class="user-role">{{ u.role }}</span>
+        </div>
+        <button class="button-logout" mat-icon-button aria-label="Salir" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+
+    <!-- Aquí carga el router -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

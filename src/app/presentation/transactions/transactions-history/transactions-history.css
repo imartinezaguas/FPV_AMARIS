@@ -1,0 +1,99 @@
+.tx-card {
+  margin: 16px;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.user-select {
+  margin: 12px 0;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+}
+
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px;
+  color: rgba(0,0,0,0.54);
+  font-style: italic;
+}
+
+/* --- Tabla (desktop) --- */
+.desktop table {
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.desktop th {
+  text-transform: uppercase;
+  font-size: 12px;
+  background: #f5f5f5;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.desktop td {
+  padding: 12px;
+  font-size: 14px;
+}
+
+.desktop tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* Colores */
+.icon-success { color: #2e7d32; }
+.icon-error { color: #c62828; }
+.text-success { color: #2e7d32; font-weight: 500; }
+.text-error { color: #c62828; font-weight: 500; }
+
+/* --- Mobile (cards) --- */
+.mobile {
+  display: none;
+}
+
+.tx-card-mobile {
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.tx-card-mobile .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.tx-card-mobile .row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #0a4e85;
+}
+
+.value {
+  font-size: 14px;
+}
+
+/* --- Switch de vistas --- */
+@media (max-width: 768px) {
+  .desktop { display: none; }
+  .mobile { display: block; }
+}

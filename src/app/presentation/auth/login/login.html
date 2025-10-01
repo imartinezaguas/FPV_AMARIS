@@ -1,0 +1,37 @@
+<div class="login-background">
+  <div class="login-container">
+    <mat-card class="login-card">
+      <mat-card-title class="title">Fondo Voluntario de Pensión</mat-card-title>
+      <p class="subtitle">Ingrese sus credenciales para acceder</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario</mat-label>
+          <input matInput placeholder="usuario" formControlName="username" />
+          <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            El usuario es obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            La contraseña es obligatoria
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button  class="full-width login-btn" type="submit">
+          Iniciar Sesión
+        </button>
+
+        <div class="aux-links">
+          <a (click)="navigateResetPassword()" class="reset-link">¿Olvidó su contraseña?</a>
+        </div>
+      </form>
+    </mat-card>
+    <footer class="footer">
+      © 2025 Fondo Voluntario de Pensión. Todos los derechos reservados.
+    </footer>
+  </div>
+</div>

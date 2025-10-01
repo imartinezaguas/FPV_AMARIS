@@ -1,59 +1,110 @@
-# FPV
+# 🏦 BTG Fondos - Angular + Clean Architecture
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+Aplicación web que simula la gestión de **fondos de inversión**, con autenticación, suscripción/cancelación de fondos y un historial de transacciones.  
+El proyecto está desarrollado en **Angular + Angular Material**, siguiendo los principios de **Arquitectura Limpia (Clean Architecture)**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📸 Demo
+
+*
+(./img/1.png)
+
+(./img/2.png)
+
+(./img/3.png)
+
+(./img/4.png)
+
+(./img/5.png)
+
+(./img/6.png)
+
+(./img/7.png)
+
+(./img/8.png)
+
+---
+
+## 🚀 Características
+
+- 🔑 **Autenticación** con diferentes roles:
+  - Cliente
+  - Consultor
+  - Admin
+- 💰 **Suscripción y cancelación** de fondos de inversión
+- 📊 **Historial de transacciones** (personalizado según el rol)
+- 🖥️ **Dashboard** con saldo actualizado en tiempo real usando **Signals**
+- 🎨 **UI moderna con Angular Material** (toolbar, sidenav, tablas, botones, etc.)
+- 🧩 Arquitectura limpia separada en capas:
+  - **Domain** → Entidades, repositorios
+  - **Application** → Casos de uso
+  - **Infrastructure** → Implementaciones concretas
+  - **Presentation** → Componentes Angular (UI)
+
+---
+
+## 🛠️ Tecnologías
+
+- [Angular 17+](https://angular.io/)  
+- [Angular Material](https://material.angular.io/)  
+- [TypeScript](https://www.typescriptlang.org/)  
+- [RxJS](https://rxjs.dev/)  
+- Arquitectura basada en **Clean Architecture**  
+
+---
+
+## 📂 Estructura del Proyecto
 
 ```bash
-ng serve
+src/
+ ├── app/
+ │   ├── domain/              # Entidades y repositorios
+ │   ├── application/         # Casos de uso (UseCases)
+ │   ├── infrastructure/      # Repositorios implementados (mock/localStorage)
+ │   ├── presentation/        # Componentes Angular (UI + Angular Material)
+ │   └── core/                # Servicios globales (AuthService, Guards, etc.)
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## ⚙️ Instalación y Uso
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/btg-fondos.git
+   cd btg-fondos
+   ```
 
-```bash
-ng generate component component-name
-```
+2. Instalar dependencias:
+   ```bash
+   npm install
+   ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. Ejecutar en modo desarrollo:
+   ```bash
+   ng serve -o
+   ```
 
-```bash
-ng generate --help
-```
+4. Compilar para producción:
+   ```bash
+   ng build --configuration production
+   ```
 
-## Building
+---
 
-To build the project run:
+## 👤 Roles y Permisos
 
-```bash
-ng build
-```
+- **Cliente** → Ver sus propios fondos y transacciones  
+- **Consultor** → Ver transacciones de todos los clientes (excepto otros consultores)  
+- **Admin** → Gestionar usuarios, fondos y transacciones  
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 📝 Licencia
+ 
+Siéntete libre de usarlo, modificarlo y mejorarlo.  
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+✨ Hecho con ❤️ usando **Angular + Clean Architecture**.

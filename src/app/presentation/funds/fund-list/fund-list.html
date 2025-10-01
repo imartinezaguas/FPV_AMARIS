@@ -1,0 +1,37 @@
+<div class="funds-header">
+  <mat-icon>folder_open</mat-icon>
+  <h1>Fondos disponibles</h1>
+  <p>Invierte en los mejores fondos del mercado con montos mínimos accesibles</p>
+</div>
+
+<div class="fund-container">
+  <mat-card *ngFor="let fund of funds" class="fund-card">
+    <div class="fund-icon">
+      <mat-icon>trending_up</mat-icon>
+    </div>
+    <mat-card-title class="fund-title">{{ fund.name }}</mat-card-title>
+    <mat-card-content>
+      <p class="label">Monto mínimo</p>
+      <strong class="amount">{{ fund.minAmount | currency:'COP' }}</strong>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        *ngIf="!isSubscribed(fund.id)"
+        mat-raised-button
+        color="primary"
+        class="fund-btn"
+        (click)="subscribe(fund.id)">
+        Suscribirse
+      </button>
+
+      <button
+        *ngIf="isSubscribed(fund.id)"
+        mat-raised-button
+        color="warn"
+        class="fund-btn"
+        (click)="cancelSubcribe(fund.id)">
+        Cancelar Suscripción
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

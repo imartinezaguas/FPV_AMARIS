@@ -1,0 +1,64 @@
+<div class="hero">
+  <div class="hero-content">
+    <h1>
+      Fondo Voluntario de Pensión y Fondos de <br />
+      Inversión Colectiva
+    </h1>
+    <p>
+      El <strong>Fondo Voluntario de Pensión (FPV)</strong> de BTG Pactual es un vehículo de inversión
+      que permite obtener rendimientos de acuerdo con políticas previstas, alcanzar metas de ahorro o pensión,
+      y acceder a beneficios tributarios según la ley.
+    </p>
+    <p>
+      Los <strong>Fondos de Inversión Colectiva (FIC)</strong> son opciones que agrupan inversionistas,
+      gestionadas por un equipo experto que selecciona activos globales y locales para estructurar fondos
+      con objetivos y plazos definidos, logrando retornos y diversificación del riesgo.
+    </p>
+  </div>
+</div>
+
+<!-- Métricas -->
+<div class="metrics">
+  <div class="metric">
+    <mat-icon>trending_up</mat-icon>
+    <h3>5+</h3>
+    <p>Fondos Disponibles</p>
+  </div>
+  <div class="metric">
+    <mat-icon>groups</mat-icon>
+    <h3>10,000+</h3>
+    <p>Inversionistas</p>
+  </div>
+  <div class="metric">
+    <mat-icon>verified</mat-icon>
+    <h3>100%</h3>
+    <p>Seguro y Regulado</p>
+  </div>
+</div>
+
+<!-- Fondos -->
+<div class="funds-section">
+  <h2>Fondos Disponibles</h2>
+  <p class="subtitle">Explora nuestra selección de fondos diseñados para diferentes objetivos de inversión</p>
+
+  <div class="funds-grid">
+    <mat-card *ngFor="let fund of funds" class="fund-card">
+      <mat-card-title>{{ fund.name }}</mat-card-title>
+      <mat-card-content>
+        <p>Monto mínimo</p>
+        <strong>{{ fund.minAmount | currency:'COP' }}</strong>
+        <span class="category">{{ fund.category }}</span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 BTG Fondos. Todos los derechos reservados.</p>
+  <nav>
+    <a href="#">Términos</a>
+    <a href="#">Privacidad</a>
+    <a href="#">Contacto</a>
+  </nav>
+</footer>
