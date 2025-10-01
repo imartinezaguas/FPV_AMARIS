@@ -100,6 +100,21 @@ src/
 
 ---
 
+---
+
+## 👥 Usuarios de prueba
+
+Estos son los usuarios disponibles para iniciar sesión en la aplicación:
+
+| Nombre             | Usuario    | Contraseña | Rol       | Balance   |
+|--------------------|-----------|------------|-----------|-----------|
+| Administrador      | admin     | 1234       | Admin     | $500,000  |
+| Anderson Ocampo    | aocampo   | 1234       | Consultor | $0        |
+| Ivan Martinez      | imartinez | 1234       | Cliente   | $500,000  |
+| Juliana Londoño    | julilon   | 1234       | Cliente   | $500,000  |
+
+---
+
 ## 📝 Licencia
  
 Siéntete libre de usarlo, modificarlo y mejorarlo.  
