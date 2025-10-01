@@ -8,21 +8,21 @@ El proyecto está desarrollado en **Angular + Angular Material**, siguiendo los 
 ## 📸 Demo
 
 *
-(./img/1.png)
+(./public/img/1.png)
 
-(./img/2.png)
+(./public/img/2.png)
 
-(./img/3.png)
+(./public/img/3.png)
 
-(./img/4.png)
+(./public/img/4.png)
 
-(./img/5.png)
+(./public/img/5.png)
 
-(./img/6.png)
+(./public/img/6.png)
 
-(./img/7.png)
+(./public/img/7.png)
 
-(./img/8.png)
+(./public/img/8.png)
 
 ---
 
